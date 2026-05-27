@@ -1,0 +1,33 @@
+# Wildlife YOLO Models — training dependencies
+
+# ── Core ────────────────────────────────────────────────────────────────────────
+ultralytics>=8.3          # YOLO11 training + inference
+torch>=2.1
+torchvision>=0.16
+
+# ── Dataset / annotation ────────────────────────────────────────────────────────
+huggingface_hub>=0.23     # download/upload models and datasets
+datasets>=2.20            # HuggingFace datasets (WCS Camera Traps mirror)
+pycocotools>=2.0          # COCO annotation parsing
+Pillow>=10.0
+opencv-python-headless>=4.9
+numpy>=1.26
+
+# ── MegaDetector (bbox generation for sparse-annotation datasets) ────────────
+# Install from source — not on PyPI:
+#   pip install git+https://github.com/agentmorris/MegaDetector.git
+# Requires torch (already listed above).
+
+# ── Cloud storage (NACTI / LILA BC download) ────────────────────────────────────
+# GCP: pip install google-cloud-storage   (or use: gsutil cp ...)
+# AWS: pip install boto3                  (or use: aws s3 cp ...)
+requests>=2.31
+
+# ── Evaluation + visualisation ──────────────────────────────────────────────────
+pandas>=2.0
+matplotlib>=3.8
+seaborn>=0.13
+tqdm>=4.66
+
+# ── Optional: experiment tracking ───────────────────────────────────────────────
+# wandb>=0.17   # uncomment to enable Weights & Biases logging

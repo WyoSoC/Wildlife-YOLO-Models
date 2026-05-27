@@ -1,0 +1,17 @@
+# YOLO dataset config — Bighorn Sheep (Ovis canadensis)
+#
+# Primary source: NACTI (North American Camera Trap Images)
+#   https://lila.science/datasets/nacti/
+#   ~23.8K bighorn sheep images (0.60% of dataset)
+#
+# Note: class imbalance is severe — use weighted sampling or oversampling.
+# See 02_prepare_dataset.py --oversample flag.
+
+path: ../datasets/bighorn_sheep
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: bighorn_sheep

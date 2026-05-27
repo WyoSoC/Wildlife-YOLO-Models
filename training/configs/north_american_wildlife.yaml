@@ -1,0 +1,38 @@
+# YOLO dataset config — North American Wildlife (multi-species)
+#
+# 7-class detection model for common wildlife in the Greater Yellowstone Ecosystem
+# and surrounding western U.S. ranges.
+#
+# Data sources (combined):
+#   NACTI     — Pronghorn, Bighorn Sheep, Bison, Mule Deer, Elk, Coyote
+#   iNaturalist — Golden Eagle (MegaDetector bbox generation required)
+#   WCS Camera Traps — supplementary coverage
+#
+# Class balance note:
+#   Pronghorn and elk are heavily over-represented in NACTI.
+#   Use --weighted-sampling or focal loss to handle imbalance.
+#   See 02_prepare_dataset.py --species all --balance.
+
+path: ../datasets/north_american_wildlife
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 7
+names:
+  0: golden_eagle
+  1: pronghorn
+  2: bighorn_sheep
+  3: bison
+  4: mule_deer
+  5: elk
+  6: coyote
+
+# Recommended base model: yolo11m (larger capacity for multi-class)
+# epochs: 150
+# imgsz: 640
+# batch: 16
+# mosaic: 1.0
+# mixup: 0.1      # helps with class confusion (deer vs elk silhouette)
+# degrees: 10.0
+# scale: 0.5

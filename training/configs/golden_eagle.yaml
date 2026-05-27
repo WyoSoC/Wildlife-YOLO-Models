@@ -1,0 +1,25 @@
+# YOLO dataset config — Golden Eagle (Aquila chrysaetos)
+#
+# Primary source: iNaturalist GBIF export (classification labels, no bbox)
+#   https://www.inaturalist.org/taxa/5074-Aquila-chrysaetos
+#   10,000+ research-grade observations with photos
+#
+# Workflow: MegaDetector generates bboxes → filter "animal" class →
+#           use iNaturalist species label as the YOLO class name.
+# See 02_prepare_dataset.py for the full pipeline.
+#
+# Supplementary: eBird/Macaulay Library (flight images — important for PTZ tracking)
+
+path: ../datasets/golden_eagle
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: golden_eagle
+
+# Recommended augmentation for aerial/flight tracking:
+# degrees: 15.0     # eagles bank and roll
+# scale: 0.5        # large size variation (soaring vs. close-up)
+# fliplr: 0.5

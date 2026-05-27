@@ -1,0 +1,22 @@
+# YOLO dataset config — American Bison (Bison bison)
+#
+# Primary source: NACTI (North American Camera Trap Images)
+#   https://lila.science/datasets/nacti/
+#   ~97K bison images (2.45% of dataset)
+#
+# Supplementary: iNaturalist GBIF export (research-grade observations)
+#   https://www.inaturalist.org/taxa/43121-Bison-bison
+
+path: ../datasets/bison
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: bison
+
+# Note: adult bison are large — reduce augmentation scale range.
+# Baby calves can be as small as 5% of frame; include small-object examples.
+# degrees: 5.0     # bison don't move erratically; mild rotation is fine
+# scale: 0.4

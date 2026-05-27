@@ -1,0 +1,26 @@
+# YOLO dataset config — Pronghorn (Antilocapra americana)
+#
+# Primary source: NACTI (North American Camera Trap Images)
+#   https://lila.science/datasets/nacti/
+#   ~690K pronghorn images (17.34% of dataset)
+#
+# Run training/01_download_dataset.py --species pronghorn to populate these paths.
+
+path: ../datasets/pronghorn     # root (relative to this config file)
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: pronghorn
+
+# Training hyperparameters (override on CLI as needed)
+# ultralytics defaults are good starting points; tune these after a baseline run.
+# epochs: 100
+# imgsz: 640
+# batch: 16        # reduce if OOM; use -1 for auto-batch
+# lr0: 0.01
+# lrf: 0.01        # final LR = lr0 * lrf
+# mosaic: 1.0      # mosaic augmentation (very helpful for small/occluded subjects)
+# degrees: 10.0    # rotation augmentation (wildlife can be at any angle)

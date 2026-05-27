@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Datasets (large — store on LILA BC / HuggingFace, not in this repo)
+datasets/
+data/
+
+# Model weights (store on HuggingFace, not here)
+*.pt
+*.onnx
+*.engine
+*.tflite
+
+# Training runs
+runs/
+wandb/
+
+# Notebooks output
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
