@@ -1,0 +1,11 @@
+# YOLO dataset config — Prairie Dog (Cynomys ludovicianus)
+# Source: iNaturalist
+
+path: ../datasets/prairie_dog
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: prairie_dog

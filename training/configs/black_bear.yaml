@@ -1,0 +1,11 @@
+# YOLO dataset config — Black Bear (Ursus americanus)
+# Source: NACTI + iNaturalist
+
+path: ../datasets/black_bear
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: black_bear

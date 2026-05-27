@@ -50,4 +50,4 @@ Minority classes (bighorn sheep, golden eagle) are oversampled.
 
 ## HuggingFace
 
-<https://huggingface.co/WyoSoC/wildlife-north-american>
+<https://huggingface.co/UWyo/wildlife-north-american>

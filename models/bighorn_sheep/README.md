@@ -36,4 +36,4 @@ Class imbalance is significant: bighorn make up only 0.60 % of NACTI images.
 
 ## HuggingFace
 
-<https://huggingface.co/WyoSoC/wildlife-bighorn-sheep>
+<https://huggingface.co/UWyo/wildlife-bighorn-sheep>

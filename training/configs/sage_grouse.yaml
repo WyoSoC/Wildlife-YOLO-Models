@@ -1,0 +1,11 @@
+# YOLO dataset config — Sage Grouse (Centrocercus urophasianus)
+# Source: iNaturalist
+
+path: ../datasets/sage_grouse
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: sage_grouse

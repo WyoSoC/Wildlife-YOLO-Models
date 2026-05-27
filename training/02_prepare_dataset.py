@@ -39,13 +39,31 @@ from tqdm import tqdm  # type: ignore
 # ---------------------------------------------------------------------------
 
 SPECIES_CLASS_MAP: dict[str, int] = {
-    "golden_eagle":  0,
-    "pronghorn":     1,
-    "bighorn_sheep": 2,
-    "bison":         3,
-    "mule_deer":     4,
-    "elk":           5,
-    "coyote":        6,
+    "golden_eagle":    0,
+    "pronghorn":       1,
+    "bighorn_sheep":   2,
+    "bison":           3,
+    "mule_deer":       4,
+    "elk":             5,
+    "coyote":          6,
+    "grizzly_bear":    7,
+    "gray_wolf":       8,
+    "moose":           9,
+    "pika":           10,
+    "swift_fox":      11,
+    "mountain_lion":  12,
+    "river_otter":    13,
+    "black_bear":     14,
+    "bald_eagle":     15,
+    "red_tailed_hawk":16,
+    "osprey":         17,
+    "sage_grouse":    18,
+    "trumpeter_swan": 19,
+    "beaver":         20,
+    "raven":          21,
+    "prairie_dog":    22,
+    "badger":         23,
+    "bobcat":         24,
 }
 
 MEGADETECTOR_ANIMAL_CLASS = 1  # MegaDetector: 1=animal, 2=human, 3=vehicle
@@ -268,7 +286,7 @@ def split_and_copy(
 
         for img_src, lbl_src in tqdm(split_pairs, desc=f"  copy → {split_name}"):
             shutil.copy2(img_src, img_dir / img_src.name)
-            shutil.copy2(lbl_src, lbl_dir / lbl_src.stem + ".txt")
+            shutil.copy2(lbl_src, lbl_dir / (lbl_src.stem + ".txt"))
 
     for split_name, split_pairs in splits.items():
         print(f"  {split_name}: {len(split_pairs)} samples")

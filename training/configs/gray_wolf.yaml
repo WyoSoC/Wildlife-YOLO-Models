@@ -1,0 +1,11 @@
+# YOLO dataset config — Gray Wolf (Canis lupus)
+# Source: NACTI (sparse) + iNaturalist
+
+path: ../datasets/gray_wolf
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: gray_wolf

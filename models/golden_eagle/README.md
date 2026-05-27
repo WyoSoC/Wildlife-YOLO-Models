@@ -40,7 +40,7 @@ PTZ camera tracking of soaring and perched birds.
 
 ```python
 from ultralytics import YOLO
-model = YOLO("WyoSoC/wildlife-golden-eagle")
+model = YOLO("UWyo/wildlife-golden-eagle")
 results = model.predict("flight.jpg", conf=0.25)
 ```
 
@@ -48,4 +48,4 @@ Or download via [scripts/download_models.py](../../scripts/download_models.py).
 
 ## HuggingFace
 
-<https://huggingface.co/WyoSoC/wildlife-golden-eagle>
+<https://huggingface.co/UWyo/wildlife-golden-eagle>

@@ -6,14 +6,14 @@ Usage:
 
     python 06_upload_to_hf.py \
         --weights runs/train/pronghorn/weights/best.pt \
-        --model-id WyoSoC/wildlife-pronghorn \
+        --model-id UWyo/wildlife-pronghorn \
         --species pronghorn
 
     # Also upload ONNX:
     python 06_upload_to_hf.py \
         --weights runs/train/pronghorn/weights/best.pt \
         --onnx    runs/train/pronghorn/weights/best.onnx \
-        --model-id WyoSoC/wildlife-pronghorn \
+        --model-id UWyo/wildlife-pronghorn \
         --species pronghorn \
         --private   # keep private until review
 """
@@ -21,6 +21,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import tempfile
 from pathlib import Path
@@ -86,7 +87,7 @@ app's `models/` folder to activate it.
 ```python
 from ultralytics import YOLO
 
-model = YOLO("WyoSoC/wildlife-{species.replace("_", "-")}")
+model = YOLO("UWyo/wildlife-{species.replace("_", "-")}")
 
 results = model.predict("your_image.jpg", conf=0.25)
 results[0].show()
@@ -116,7 +117,7 @@ CC-BY-4.0 — same as the underlying training datasets.
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Upload YOLO model weights to HuggingFace Hub")
     p.add_argument("--weights",  type=Path, required=True, help="Path to best.pt")
-    p.add_argument("--model-id", required=True,             help="HF repo, e.g. WyoSoC/wildlife-pronghorn")
+    p.add_argument("--model-id", required=True,             help="HF repo, e.g. UWyo/wildlife-pronghorn")
     p.add_argument("--species",  required=True,             help="Species key, e.g. pronghorn")
     p.add_argument("--onnx",     type=Path, default=None,   help="Also upload ONNX weights")
     p.add_argument("--map50",    type=float, default=None,  help="mAP50 to embed in model card")
@@ -127,8 +128,25 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def _load_env() -> None:
+    """Load variables from .env in the repo root (if present)."""
+    env_path = Path(__file__).resolve().parents[1] / ".env"
+    if not env_path.exists():
+        return
+    for line in env_path.read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key = key.strip()
+        val = val.strip()
+        if key and val and key not in os.environ:
+            os.environ[key] = val
+
+
 def main() -> None:
     args = parse_args()
+    _load_env()
 
     try:
         from huggingface_hub import HfApi, create_repo  # type: ignore
@@ -136,10 +154,15 @@ def main() -> None:
         print("[error] Install huggingface_hub: pip install huggingface_hub", file=sys.stderr)
         sys.exit(1)
 
-    api = HfApi()
+    token = os.environ.get("HF_TOKEN") or None
+    if not token:
+        print("[warn] HF_TOKEN not set — falling back to huggingface-cli login cache.")
+
+    api = HfApi(token=token)
 
     # Create repo if it doesn't exist
-    create_repo(args.model_id, repo_type="model", private=args.private, exist_ok=True)
+    create_repo(args.model_id, repo_type="model", private=args.private,
+                exist_ok=True, token=token)
     print(f"[hf] Repo: https://huggingface.co/{args.model_id}")
 
     # Generate and upload model card

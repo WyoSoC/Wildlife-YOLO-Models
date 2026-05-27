@@ -1,0 +1,11 @@
+# YOLO dataset config — Swift Fox (Vulpes velox)
+# Source: iNaturalist (~237 images available)
+
+path: ../datasets/swift_fox
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: swift_fox

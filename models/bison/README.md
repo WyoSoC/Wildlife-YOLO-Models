@@ -35,4 +35,4 @@ trained on NACTI camera-trap images supplemented by iNaturalist observations.
 
 ## HuggingFace
 
-<https://huggingface.co/WyoSoC/wildlife-bison>
+<https://huggingface.co/UWyo/wildlife-bison>

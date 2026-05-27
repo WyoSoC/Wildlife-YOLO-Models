@@ -25,41 +25,33 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 SPECIES_CONFIG: dict[str, dict] = {
-    "pronghorn": {
-        "nacti_category": "pronghorn",
-        "wcs_query": "Antilocapra americana",
-        "inaturalist_taxon_id": 42471,
-    },
-    "bighorn_sheep": {
-        "nacti_category": "bighorn",
-        "wcs_query": "Ovis canadensis",
-        "inaturalist_taxon_id": 43218,
-    },
-    "golden_eagle": {
-        "nacti_category": None,  # not in NACTI
-        "wcs_query": "Aquila chrysaetos",
-        "inaturalist_taxon_id": 5074,
-    },
-    "bison": {
-        "nacti_category": "bison",
-        "wcs_query": "Bison bison",
-        "inaturalist_taxon_id": 43121,
-    },
-    "mule_deer": {
-        "nacti_category": "mule deer",
-        "wcs_query": "Odocoileus hemionus",
-        "inaturalist_taxon_id": 42390,
-    },
-    "elk": {
-        "nacti_category": "elk",
-        "wcs_query": "Cervus canadensis",
-        "inaturalist_taxon_id": 42418,
-    },
-    "coyote": {
-        "nacti_category": "coyote",
-        "wcs_query": "Canis latrans",
-        "inaturalist_taxon_id": 41944,
-    },
+    # ── original 7 ────────────────────────────────────────────────────────────
+    "golden_eagle":    {"nacti_category": None,          "wcs_query": "Aquila chrysaetos",          "inaturalist_taxon_id": 2480506},
+    "pronghorn":       {"nacti_category": "pronghorn",   "wcs_query": "Antilocapra americana",      "inaturalist_taxon_id": 2440902},
+    "bighorn_sheep":   {"nacti_category": "bighorn",     "wcs_query": "Ovis canadensis",            "inaturalist_taxon_id": 2441119},
+    "bison":           {"nacti_category": "bison",       "wcs_query": "Bison bison",                "inaturalist_taxon_id": 2441176},
+    "mule_deer":       {"nacti_category": "mule deer",   "wcs_query": "Odocoileus hemionus",        "inaturalist_taxon_id": 2440974},
+    "elk":             {"nacti_category": "elk",         "wcs_query": "Cervus canadensis",          "inaturalist_taxon_id": 8600904},
+    "coyote":          {"nacti_category": "coyote",      "wcs_query": "Canis latrans",              "inaturalist_taxon_id": 5219153},
+    # ── new 18 ────────────────────────────────────────────────────────────────
+    "grizzly_bear":    {"nacti_category": "grizzly",     "wcs_query": "Ursus arctos horribilis",    "inaturalist_taxon_id": 6163845},
+    "gray_wolf":       {"nacti_category": "gray wolf",   "wcs_query": "Canis lupus",                "inaturalist_taxon_id": 5219173},
+    "moose":           {"nacti_category": "moose",       "wcs_query": "Alces alces",                "inaturalist_taxon_id": 2440940},
+    "pika":            {"nacti_category": None,          "wcs_query": "Ochotona princeps",          "inaturalist_taxon_id": 2436982},
+    "swift_fox":       {"nacti_category": None,          "wcs_query": "Vulpes velox",               "inaturalist_taxon_id": 5219290},
+    "mountain_lion":   {"nacti_category": "mountain lion","wcs_query": "Puma concolor",             "inaturalist_taxon_id": 2435099},
+    "river_otter":     {"nacti_category": None,          "wcs_query": "Lontra canadensis",          "inaturalist_taxon_id": 2433727},
+    "black_bear":      {"nacti_category": "black bear",  "wcs_query": "Ursus americanus",           "inaturalist_taxon_id": 2433407},
+    "bald_eagle":      {"nacti_category": None,          "wcs_query": "Haliaeetus leucocephalus",   "inaturalist_taxon_id": 2480446},
+    "red_tailed_hawk": {"nacti_category": None,          "wcs_query": "Buteo jamaicensis",          "inaturalist_taxon_id": 2480542},
+    "osprey":          {"nacti_category": None,          "wcs_query": "Pandion haliaetus",          "inaturalist_taxon_id": 2480726},
+    "sage_grouse":     {"nacti_category": None,          "wcs_query": "Centrocercus urophasianus",  "inaturalist_taxon_id": 5959240},
+    "trumpeter_swan":  {"nacti_category": None,          "wcs_query": "Cygnus buccinator",          "inaturalist_taxon_id": 2498345},
+    "beaver":          {"nacti_category": "beaver",      "wcs_query": "Castor canadensis",          "inaturalist_taxon_id": 2439838},
+    "raven":           {"nacti_category": None,          "wcs_query": "Corvus corax",               "inaturalist_taxon_id": 2482492},
+    "prairie_dog":     {"nacti_category": None,          "wcs_query": "Cynomys ludovicianus",       "inaturalist_taxon_id": 2437232},
+    "badger":          {"nacti_category": "badger",      "wcs_query": "Taxidea taxus",              "inaturalist_taxon_id": 2434102},
+    "bobcat":          {"nacti_category": None,          "wcs_query": "Lynx rufus",                 "inaturalist_taxon_id": 2435246},
 }
 
 NACTI_GCP_BUCKET = "gs://public-datasets-lila/nacti/nacti_images/"

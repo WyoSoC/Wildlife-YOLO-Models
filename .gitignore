@@ -25,6 +25,9 @@ wandb/
 # macOS
 .DS_Store
 
+# Secrets
+.env
+
 # Editor
 .vscode/
 .idea/

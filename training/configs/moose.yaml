@@ -1,0 +1,11 @@
+# YOLO dataset config — Moose (Alces alces)
+# Source: NACTI + iNaturalist
+
+path: ../datasets/moose
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: moose

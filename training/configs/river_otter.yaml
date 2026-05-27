@@ -1,0 +1,11 @@
+# YOLO dataset config — River Otter (Lontra canadensis)
+# Source: iNaturalist
+
+path: ../datasets/river_otter
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: river_otter

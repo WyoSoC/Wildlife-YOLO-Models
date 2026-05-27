@@ -1,0 +1,11 @@
+# YOLO dataset config — Mountain Lion (Puma concolor)
+# Source: NACTI (sparse) + iNaturalist
+
+path: ../datasets/mountain_lion
+train: images/train
+val:   images/val
+test:  images/test
+
+nc: 1
+names:
+  0: mountain_lion

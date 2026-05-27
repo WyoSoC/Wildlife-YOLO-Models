@@ -1,5 +1,5 @@
 """
-Download a Wildlife YOLO model from the WyoSoC HuggingFace collection.
+Download a Wildlife YOLO model from the UWyo HuggingFace collection.
 
 Usage:
     python scripts/download_models.py --model golden_eagle --out models/
@@ -16,7 +16,7 @@ import argparse
 import sys
 from pathlib import Path
 
-HF_ORG = "WyoSoC"
+HF_ORG = "UWyo"
 
 MODEL_REGISTRY: dict[str, dict] = {
     "golden_eagle": {
